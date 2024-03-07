@@ -1,0 +1,40 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+class UserVerify extends Model
+{
+    use HasFactory, SoftDeletes;
+  
+    public $table = "users_verify";
+  
+    /**
+     * Write code on Method
+     *
+     * @return response()
+     */
+    protected $fillable = [
+        'userid',
+        'token',
+    ];
+  
+    /**
+     * Write code on Method
+     *
+     * @return response()
+     */
+    // public function user()
+    // {
+    //     return $this->belongsTo(User::class);
+    // }
+
+    
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'userid');
+    }
+}
